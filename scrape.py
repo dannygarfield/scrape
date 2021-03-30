@@ -1,51 +1,60 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-from flask import Flask
+from flask import Flask, make_response, request, abort
+from validator_collection import validators, checkers, errors
 
 app = Flask(__name__)
 
-# url = "https://www.mela-health.com/"
-url = "http://localhost:3000/"
-search_term = "MY NAME IS DANNY"
-
 
 @app.route('/')
-def hello_world():
-    return count_search_terms(url, search_term)
+def scrape():
+    # get params from request body
+    search_term = request.args.get("search_term", "")  # default to empty string
+    url = request.args.get("url", "google.com")  # default to empty string
+
+    # validate url
+    url_is_good = checkers.is_url(url, allow_empty = False)
+    if not url_is_good:
+        abort(400)
+
+    # try to make request
+    try:
+        req = requests.get(url)
+    except:
+        abort(400)
+
+    parsed_request = request_to_list_of_text(req)
+    count = count_search_terms(search_term, parsed_request)
+
+    response_body = {
+        "url": url,
+        "search_term": search_term,
+        "count": count
+    }
+    resp = make_response(response_body)
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp
 
 
-req = requests.get(url)
-page_content = req.content.decode(encoding='UTF-8')
-soup = BeautifulSoup(page_content, 'html.parser')
-lst = [text for text in soup.stripped_strings]
+def request_to_list_of_text(req):
+    page_content = req.content.decode(encoding='UTF-8')
+    parsed_html = BeautifulSoup(page_content, 'html.parser')
+    text_list = [text for text in parsed_html.stripped_strings]
+    return text_list
 
 
-def count_search_terms(url, search_term):
+def count_search_terms(search_term, text_list):
     count = 0
     search_term = search_term.lower()
-
-    req = requests.get(url)
-    # print(req.status_code)
-    # print(req.text)
-    page_content = req.content.decode(encoding='UTF-8')
-
-    soup = BeautifulSoup(page_content, 'html.parser')
-    # body = soup.find('body')
-    # all_text = soup.get_text().lower()
-    print(soup.stripped_strings)
-    text_list = [text for text in soup.stripped_strings]
-
+    # loop through all text
     for text in text_list:
         text_lowered = text.lower()
-        for i in range(len(text_lowered)):
-            if text.startswith(search_term, i):
-                print(text_lowered)
-                count += 1
+        # find all instances of our search_term in each text element on the page
+        indices = [i for i in range(len(text_lowered)) if text_lowered.startswith(search_term, i)]
+        count += len(indices)
 
-    print("count:", count)
-    resp = {"count": count}
-    return resp
+    return count
 
 
 app.run(debug=True, port=8000, host='0.0.0.0')
