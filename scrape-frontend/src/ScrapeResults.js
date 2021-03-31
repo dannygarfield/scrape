@@ -14,27 +14,26 @@ function ScrapeResults(props) {
         key={index}
         url={r.url}
         searchTerm={r.searchTerm}
-        errorCode={r.errorCode}
         count={r.count} />
     )
   });
 
   return (
     <div>
-      <h2>results</h2>
-      <table>
+      <h2>Results</h2>
+      <table className="results">
         <thead>
           <tr>
             <th>search term</th>
             <th>url</th>
             <th>count</th>
-            <th>error code</th>
           </tr>
         </thead>
         <tbody>
           {rows}
         </tbody>
       </table>
+      <p>*A count of -1 indicates a bad URL was given. Please check that your URL begins with "http://" or "https://".</p>
     </div>
   );
 }

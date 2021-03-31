@@ -4,7 +4,6 @@ function ResultRow(props) {
       <td>{props.searchTerm}</td>
       <td>{props.url}</td>
       <td>{props.count}</td>
-      <td>{props.errorCode}</td>
     </tr>
   );
 }

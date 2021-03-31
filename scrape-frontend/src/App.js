@@ -21,7 +21,6 @@ function App() {
         <h1>Scrape the web</h1>
         <ScrapeForm addResult={handleAddResult} />
         <ScrapeResults results={results} />
-
       </header>
     </div>
   );
