@@ -26,3 +26,4 @@ npm start
 ```
 
 - navigate to [localhost:3000](http://localhost:3000/)
+- <a href="http://localhost:3000/" target="_blank">localhost:3000</a>
