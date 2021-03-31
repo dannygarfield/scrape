@@ -19,7 +19,6 @@ def scrape():
             "url": url,
             "search_term": search_term,
             "count": -1,
-            "error_code": "bad url given"
         }
         resp = make_response(response_body)
         resp.headers.add('Access-Control-Allow-Origin', '*')
@@ -34,7 +33,6 @@ def scrape():
             "url": url,
             "search_term": search_term,
             "count": -1,
-            "error_code": "bad url given"
         }
         resp = make_response(response_body)
         resp.headers.add('Access-Control-Allow-Origin', '*')
@@ -67,6 +65,7 @@ def count_search_terms(search_term, text_list):
     for text in text_list:
         text_lowered = text.lower()
         # find all instances of our search_term in each text element on the page
+        # each element in indices is the beginning of an occurence of the search_term
         indices = [i for i in range(len(text_lowered)) if text_lowered.startswith(search_term, i)]
         count += len(indices)
 
