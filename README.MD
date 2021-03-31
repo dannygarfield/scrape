@@ -1,4 +1,4 @@
-A README file with instructions on how to run the project, including any additional libraries and versions
+Instructions for installing and using this web scraper.
 
 
 # Web scraper
@@ -15,6 +15,7 @@ A README file with instructions on how to run the project, including any additio
 If you are unable to install with pip, please see requirements.txt in the root folder for dependencies and download each separately
 
 - Start up the backend - from the root file, run:
+
 `python3 scrape.py`
 
 
