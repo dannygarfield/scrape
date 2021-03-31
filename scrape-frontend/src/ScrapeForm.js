@@ -11,14 +11,14 @@ function ScrapeForm(props) {
       return
     }
 
-    console.log(`querying /?search_term=${searchTerm}&url=${url}`);
     fetch(`http://localhost:8000/?search_term=${searchTerm}&url=${url}`)
       .then(response => response.json() )
       .then(responseData => {
         let r = {
           searchTerm,
           url,
-          count: responseData.count
+          count: responseData.count,
+          errorCode: responseData.error_code
         }
         console.log(responseData);
         props.addResult(r);
@@ -30,7 +30,7 @@ function ScrapeForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label>url to search:</label>
         <input
           name="url"

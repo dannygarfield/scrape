@@ -16,9 +16,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>this is my scraper</p>
+        <h1>Danny Garfield: coding challenge</h1>
+        <hr></hr>
+        <h1>Scrape the web</h1>
         <ScrapeForm addResult={handleAddResult} />
         <ScrapeResults results={results} />
+
       </header>
     </div>
   );

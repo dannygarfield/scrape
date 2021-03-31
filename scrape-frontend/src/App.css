@@ -3,4 +3,14 @@
   color: darkslategrey;
   font-family: verdana;
   font-size: 12px;
+  max-width: 1120px;
+}
+
+.form {
+  margin-bottom: 36px;
+}
+
+.no-results {
+  font-weight: 600;
+  color: cornflowerblue;
 }

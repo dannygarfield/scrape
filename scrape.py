@@ -16,13 +16,30 @@ def scrape():
     # validate url
     url_is_good = checkers.is_url(url, allow_empty = False)
     if not url_is_good:
-        abort(400)
+        response_body = {
+            "url": url,
+            "search_term": search_term,
+            "count": -1,
+            "error_code": "bad url given"
+        }
+        resp = make_response(response_body)
+        resp.headers.add('Access-Control-Allow-Origin', '*')
+        return resp
 
     # try to make request
     try:
-        req = requests.get(url)
+        req = requests.get(url, timeout=0.5)
+        req.raise_for_status()
     except:
-        abort(400)
+        response_body = {
+            "url": url,
+            "search_term": search_term,
+            "count": -1,
+            "error_code": "bad url given"
+        }
+        resp = make_response(response_body)
+        resp.headers.add('Access-Control-Allow-Origin', '*')
+        return resp
 
     parsed_request = request_to_list_of_text(req)
     count = count_search_terms(search_term, parsed_request)

@@ -5,18 +5,16 @@ function ScrapeResults(props) {
   const rows = []
   if ( props.results.length === 0 ) {
     return (
-      <p>Submit above to view results</p>
+      <p className="no-results">Submit above to view results</p>
     );
   }
-  console.log("results:")
-  console.log(props.results)
   props.results.forEach((r, index) => {
-    console.log("r:", r)
     rows.push(
       <ResultRow
         key={index}
         url={r.url}
         searchTerm={r.searchTerm}
+        errorCode={r.errorCode}
         count={r.count} />
     )
   });
@@ -30,6 +28,7 @@ function ScrapeResults(props) {
             <th>search term</th>
             <th>url</th>
             <th>count</th>
+            <th>error code</th>
           </tr>
         </thead>
         <tbody>
