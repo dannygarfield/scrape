@@ -1,8 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-import re
-from flask import Flask, make_response, request, abort
-from validator_collection import validators, checkers, errors
+from flask import Flask, make_response, request
+from validator_collection import checkers
 
 app = Flask(__name__)
 
