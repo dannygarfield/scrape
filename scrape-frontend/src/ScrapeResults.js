@@ -33,7 +33,6 @@ function ScrapeResults(props) {
           {rows}
         </tbody>
       </table>
-      <p>*A count of -1 indicates a bad URL was given. Please check that your URL begins with "http://" or "https://".</p>
     </div>
   );
 }
