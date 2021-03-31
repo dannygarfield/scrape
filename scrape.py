@@ -73,4 +73,4 @@ def count_search_terms(search_term, text_list):
     return count
 
 
-app.run(debug=True, port=8000, host='0.0.0.0')
+app.run(debug=False, port=8000, host='0.0.0.0')
