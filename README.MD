@@ -3,14 +3,23 @@ A README file with instructions on how to run the project, including any additio
 
 # Web scraper
 
-Instructions for use:
+### Requirements
+- Install Python >= 3.8
+- pip >= 20.1.1
 
-### start backend server
-In the root file, run `python3 scrape.py`
+### Instructions
+- Install dependencies
+`pip install -r requirements.txt`
+If you are unable to install with pip, please see requirements.txt in the root folder for dependencies and download each separately
 
-### start frontend
-from the root file:
+- Start up the backend - from the root file, run:
+`python3 scrape.py`
+
+
+- Start up the frontend - from the root file:
 ```
 cd scrape-frontend
 npm start
 ```
+
+- navigate to [localhost:3000](localhost:3000)
