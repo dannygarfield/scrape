@@ -10,7 +10,7 @@ app = Flask(__name__)
 def scrape():
     # get params from request body
     search_term = request.args.get("search_term", "")  # default to empty string
-    url = request.args.get("url", "google.com")  # default to empty string
+    url = request.args.get("url", "")  # default to empty string
 
     # validate url
     url_is_good = checkers.is_url(url, allow_empty = False)
