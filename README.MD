@@ -1,4 +1,4 @@
-A README file with instructions on how to run the project, including any additional libraries and versions
+Instructions for installing and using this web scraper.
 
 
 # Web scraper
