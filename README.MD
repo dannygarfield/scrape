@@ -8,7 +8,7 @@ A README file with instructions on how to run the project, including any additio
 - pip >= 20.1.1
 
 ### Instructions
-- Install dependencies
+- Install dependencies:
 `pip install -r requirements.txt`
 If you are unable to install with pip, please see requirements.txt in the root folder for dependencies and download each separately
 
