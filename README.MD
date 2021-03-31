@@ -24,4 +24,4 @@ cd scrape-frontend
 npm start
 ```
 
-- navigate to [localhost:3000](localhost:3000)
+- navigate to [localhost:3000](http://localhost:3000/)
