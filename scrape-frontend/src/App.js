@@ -10,8 +10,8 @@ function App() {
 
   const handleAddResult = (r) => {
       setResults([r, ...results]);
-      console.log("new results:");
-      console.log(results);
+      console.log("new result:");
+      console.log(r);
   }
 
   return (
