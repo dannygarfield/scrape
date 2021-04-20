@@ -17,8 +17,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Danny Garfield: YipitData coding challenge</h1>
-        <hr></hr>
         <h1>Scrape the web</h1>
         <ScrapeForm addResult={handleAddResult} />
         <ScrapeResults results={results} />
